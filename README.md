@@ -44,7 +44,7 @@ Microsoft's Azure Key Vault is a great tool for securing secrets used in automat
 Installation is easy with the module being published to the PowerShell Gallery.
 
 ```
-Install-Module AzureKeyVaultHelper
+Install-Module AzureKeyVaultHelper -AllowClobber
 ```
 
 >If you are having issues accessing the PowerShell Gallery check out my [repair script](https://github.com/christaylorcodes/Initialize-PSGallery)
