@@ -410,7 +410,7 @@ Accept wildcard characters: False
 ```
 
 ### -Auto
-Will retrieve the secret and form back info the object that was set.
+Will retrieve the secret and return the same type of object that was set.
 
 ```yaml
 Type: SwitchParameter

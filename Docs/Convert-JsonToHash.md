@@ -17,7 +17,7 @@ Convert-JsonToHash [-root] <Object> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Converts a PSCustomObject converted from a JSON object to a hashtable.
 
 ## EXAMPLES
 

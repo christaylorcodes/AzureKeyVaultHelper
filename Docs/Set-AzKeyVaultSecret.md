@@ -31,63 +31,7 @@ The Set-AzKeyVaultSecret cmdlet creates or updates a secret in a key vault in Az
 If the secret does not exist, this cmdlet creates it.
 If the secret already exists, this cmdlet creates a new version of that secret.
 
-The Set-AzKeyVaultSecret cmdlet creates or updates a secret in a key vault in Azure Key Vault.
-If the secret does not exist, this cmdlet creates it.
-If the secret already exists, this cmdlet creates a new version of that secret.
-
 ## EXAMPLES
-
-### Example 1: Modify the value of a secret using default attributes
-```
-PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
-
-Vault Name   : Contoso
-Name         : ITSecret
-Version      : 8b5c0cb0326e4350bd78200fac932b51
-Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/8b5c0cb0326e4350bd78200fac932b51
-Enabled      : True
-Expires      :
-Not Before   :
-Created      : 5/25/2018 6:39:30 PM
-Updated      : 5/25/2018 6:39:30 PM
-Content Type :
-Tags         :
-```
-
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable.
-For more information, type \`Get-Help ConvertTo-SecureString\`.
-The second command modifies value of the secret named ITSecret in the key vault named Contoso.
-The secret value becomes the value stored in $Secret.
-
-### Example 2: Modify the value of a secret using custom attributes
-```
-PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $NBF =(Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
-PS C:\> $ContentType = 'txt'
-PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
-
-Vault Name   : Contoso
-Name         : ITSecret
-Version      : a2c150be3ea24dd6b8286986e6364851
-Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/a2c150be3ea24dd6b8286986e6364851
-Enabled      : False
-Expires      : 5/25/2020 6:40:00 PM
-Not Before   : 5/25/2018 6:40:05 PM
-Created      : 5/25/2018 6:41:22 PM
-Updated      : 5/25/2018 6:41:22 PM
-Content Type : txt
-Tags         : Name      Value
-               Severity  medium
-               IT        true
-```
-
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable.
-For more information, type \`Get-Help ConvertTo-SecureString\`.
-The next commands define custom attributes for the expiry date, tags, and context type, and store the attributes in variables.
-The final command modifies values of the secret named ITSecret in the key vault named Contoso, by using the values specified previously as variables.
 
 ### Example 1: Modify the value of a secret using default attributes
 ```
@@ -147,9 +91,6 @@ The final command modifies values of the secret named ITSecret in the key vault 
 Specifies the content type of a secret.
 To delete the existing content type, specify an empty string.
 
-Specifies the content type of a secret.
-To delete the existing content type, specify an empty string.
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -165,8 +106,6 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
-The credentials, account, tenant, and subscription used for communication with azure
-
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
@@ -180,8 +119,6 @@ Accept wildcard characters: False
 ```
 
 ### -Disable
-Indicates that this cmdlet disables a secret.
-
 Indicates that this cmdlet disables a secret.
 
 ```yaml
@@ -202,11 +139,6 @@ This parameter uses Coordinated Universal Time (UTC).
 To obtain a DateTime object, use the Get-Date cmdlet.
 For more information, type \`Get-Help Get-Date\`.
 
-Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates.
-This parameter uses Coordinated Universal Time (UTC).
-To obtain a DateTime object, use the Get-Date cmdlet.
-For more information, type \`Get-Help Get-Date\`.
-
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -220,8 +152,6 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Secret object
-
 Secret object
 
 ```yaml
@@ -240,9 +170,6 @@ Accept wildcard characters: False
 Specifies the name of a secret to modify.
 This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the key vault, and your current environment.
 
-Specifies the name of a secret to modify.
-This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the key vault, and your current environment.
-
 ```yaml
 Type: String
 Parameter Sets: Default
@@ -256,10 +183,6 @@ Accept wildcard characters: False
 ```
 
 ### -NotBefore
-Specifies the time, as a DateTime object, before which the secret cannot be used.
-This parameter uses UTC.
-To obtain a DateTime object, use the Get-Date cmdlet.
-
 Specifies the time, as a DateTime object, before which the secret cannot be used.
 This parameter uses UTC.
 To obtain a DateTime object, use the Get-Date cmdlet.
@@ -281,10 +204,6 @@ Specifies the value for the secret as a SecureString object.
 To obtain a SecureString object, use the ConvertTo-SecureString cmdlet.
 For more information, type \`Get-Help ConvertTo-SecureString\`.
 
-Specifies the value for the secret as a SecureString object.
-To obtain a SecureString object, use the ConvertTo-SecureString cmdlet.
-For more information, type \`Get-Help ConvertTo-SecureString\`.
-
 ```yaml
 Type: Object
 Parameter Sets: (All)
@@ -298,9 +217,6 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table.
-For example: @{key0="value0";key1=$null;key2="value2"}
-
 Key-value pairs in the form of a hash table.
 For example: @{key0="value0";key1=$null;key2="value2"}
 
@@ -320,9 +236,6 @@ Accept wildcard characters: False
 Specifies the name of the key vault to which this secret belongs.
 This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
 
-Specifies the name of the key vault to which this secret belongs.
-This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
-
 ```yaml
 Type: String
 Parameter Sets: Default
@@ -336,8 +249,6 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -356,9 +267,6 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -372,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -Auto
-Used to allows the saving of more then string data.
+Automatic conversion of input objects to secure strings.
 
 ```yaml
 Type: SwitchParameter
@@ -392,10 +300,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 ## NOTES
 ## RELATED LINKS
