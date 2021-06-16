@@ -11,17 +11,17 @@ Locale: en-US
 This module does conversions to  allow you to store PoserShell object in Key Vault.
 
 ## AzureKeyVaultHelper Cmdlets
-### [Connect-AzKeyVault](Connect-AzKeyVault.md)
+### [Connect-AzKeyVault](Docs/Connect-AzKeyVault.md)
 Loads needed modules and authenticates you with Azure.
 
-### [Convert-JsonToHash](Convert-JsonToHash.md)
+### [Convert-JsonToHash](Docs/Convert-JsonToHash.md)
 Converts the returned JSON/PSObject object to a HashTable.
 
-### [Convert-SecureStringToString](Convert-SecureStringToString.md)
+### [Convert-SecureStringToString](Docs/Convert-SecureStringToString.md)
 Converts a secure sting to a string.
 
-### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
+### [Get-AzKeyVaultSecret](Docs/Get-AzKeyVaultSecret.md)
 Gets a secret from a vault.
 
-### [Set-AzKeyVaultSecret](Set-AzKeyVaultSecret.md)
+### [Set-AzKeyVaultSecret](Docs/Set-AzKeyVaultSecret.md)
 Sets a secret in a vault.
